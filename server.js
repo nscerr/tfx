@@ -25,6 +25,19 @@ app.use(express.json());
 // ROUTER MOUNTING
 // ==========================================
 // Menyambungkan rute utama API dan melindunginya dengan API Key
+
+// 1. [PERBAIKAN] Silent Drop untuk Favicon (Mencegah log sampah)
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
+// 2. [PERBAIKAN] Root URL Handler (Mencegah log 404 saat dibuka di browser)
+app.get('/', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "Downloader API. All systems operational.",
+        version: "1.0.0"
+    });
+});
+
 app.use('/api/v1/extract', requireApiKey, apiRoutes);
 
 // Endpoint Health Check (Bebas API Key, khusus untuk dimonitor oleh PM2 / Cloudflare)
