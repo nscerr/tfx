@@ -2,14 +2,13 @@
  * @fileoverview Global Configuration
  * @architecture No Magic Strings/Numbers
  */
-
 export const CONFIG = Object.freeze({
     SERVER: {
         PORT: process.env.PORT || 3000,
-        API_KEY: process.env.API_KEY || 'rahasia-produksi-123',
+        API_KEY: process.env.API_KEY || 'FALLBACK_KEY', 
+        ENABLE_LOGS: process.env.ENABLE_LOGS !== 'false' 
     },
     SYSTEM: {
-        VERBOSE_LOGGING: true, // Set false saat produksi agar hemat log
         GLOBAL_TIMEOUT_MS: 20000,
         SOFT_TIMEOUT_MS: 10000
     },
