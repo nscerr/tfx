@@ -14,7 +14,7 @@ export const requireApiKey = (req, res, next) => {
         return res.status(401).json({
             success: false,
             error: "Unauthorized",
-            message: "Akses ditolak. Header 'x-api-key' tidak valid atau hilang."
+            message: "Akses tidak valid"
         });
     }
 
